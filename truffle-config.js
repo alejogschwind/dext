@@ -1,5 +1,4 @@
-require("babel-register");
-require("babel-pollyfill");
+require("@babel/register");
 require("dotenv").config();
 
 module.exports = {
@@ -12,6 +11,7 @@ module.exports = {
   },
   compilers: {
     solc: {
+      version: "^0.8.7",
       optimizer: {
         enabled: true,
         runs: 200
