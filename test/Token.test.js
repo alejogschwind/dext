@@ -26,5 +26,10 @@ contract('Token', (accounts) => {
       const result = await token.decimals();
       result.toString().should.be.equal('18');
     });
+
+    it('should track token totalSupply', async () => {
+      const result = await token.totalSupply();
+      result.toString().should.be.equal('100000000000000000000000000');
+    });
   });
 });
