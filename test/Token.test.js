@@ -21,5 +21,10 @@ contract('Token', (accounts) => {
       const result = await token.symbol();
       result.should.be.equal('MNG');
     });
+
+    it('should track token\'s decimals', async () => {
+      const result = await token.decimals();
+      result.toString().should.be.equal('18');
+    });
   });
 });
