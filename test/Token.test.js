@@ -7,11 +7,19 @@ require('chai')
 contract('Token', (accounts) => {
 
   describe('deployment', () => {
+    let token;
+    before(async () => {
+      token = await Token.new();
+    });
 
-    it('should track the contract\'s name', async () => {
-      const token = await Token.new();
+    it('should track token\'s name', async () => {
       const result = await token.name();
-      result.should.be.equal('DEXT');
+      result.should.be.equal('Mango');
+    });
+
+    it('should track token\'s symbol', async () => {
+      const result = await token.symbol();
+      result.should.be.equal('MNG');
     });
   });
 });
