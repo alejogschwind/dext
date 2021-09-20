@@ -11,7 +11,11 @@ contract('Token', (accounts) => {
   const symbol = "MNG";
   const decimals = "18";
   const totalSupply = "100000000" + "0".repeat(+decimals);
-  //
+  // Tests accounts
+  const [
+    deployer
+  ] = accounts;
+
   beforeEach(async () => {
     token = await Token.new();
   });
@@ -35,6 +39,11 @@ contract('Token', (accounts) => {
 
     it('should track token totalSupply', async () => {
       const result = await token.totalSupply();
+      result.toString().should.be.equal(totalSupply);
+    });
+
+    it('should assign total supply to the deployer account', async () => {
+      const result = await token.balanceOf(deployer);
       result.toString().should.be.equal(totalSupply);
     });
   });
