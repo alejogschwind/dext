@@ -94,8 +94,7 @@ contract('Token', (accounts) => {
       });
 
       it('sholud not transfer to an invalid receiver', async () => {
-        result = await token.transfer(invalidAccount, amount, { from: deployer });
-        result.should.be.rejected;
+        await token.transfer(invalidAccount, amount, { from: deployer }).should.be.rejected;
       });
 
     });
