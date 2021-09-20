@@ -86,7 +86,7 @@ contract('Token', (accounts) => {
       let result;
 
       it('sholud not transfer an invalid ammount', async () => {
-        // Sends a amount greater that totalSupply
+        // Sends an amount greater that totalSupply
         await token.transfer(receiver, invalidAmount, { from: deployer }).should.be.rejectedWith(EVM_REJECT);
 
         // Sender do not have enough balance
