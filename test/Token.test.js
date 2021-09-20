@@ -22,7 +22,6 @@ contract('Token', (accounts) => {
     token = await Token.new();
   });
 
-
   describe('deployment', () => {
 
     it('should track token\'s name', async () => {
@@ -49,6 +48,7 @@ contract('Token', (accounts) => {
       const result = await token.balanceOf(deployer);
       result.toString().should.be.equal(totalSupply);
     });
+
   });
 
   describe('transfer tokens', () => {
