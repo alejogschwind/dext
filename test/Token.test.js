@@ -65,6 +65,15 @@ contract('Token', (accounts) => {
       balanceOfDeployer.toString().should.be.equal(tokens(99999990).toString());
       balanceOfReceiver.toString().should.be.equal(tokens(10).toString());
     });
+
+    it('should emit a Transfer event', async () => {
+      const log = result.logs[0];
+      log.event.should.be.equal("Transfer");
+      const event = log.args;
+      event.from.should.be.equal(deployer, "from it's correct");
+      event.to.should.be.equal(receiver, "to it's correct");
+      event.value.toString().should.be.equal(amount.toString(), "value it's correct");
+    });
   });
 
 });
