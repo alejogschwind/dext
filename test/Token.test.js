@@ -59,9 +59,11 @@ contract('Token', (accounts) => {
     });
 
     it('should transfer token balance from sender to receiver', async () => {
-      result.should.be.equal.true;
-      balanceOf[deployer].should.be.equal(token(99999990));
-      balanceOf[receiver].should.be.equal(token(10));
+      const balanceOfDeployer = await token.balanceOf(deployer);
+      const balanceOfReceiver = await token.balanceOf(receiver);;
+
+      balanceOfDeployer.toString().should.be.equal(tokens(99999990).toString());
+      balanceOfReceiver.toString().should.be.equal(tokens(10).toString());
     });
   });
 
